@@ -4,3 +4,6 @@ from django.core.urlresolvers import reverse
 
 def index(request):
     return render(request, 'mrx/index.jade')
+
+def addPhys(request):
+	
