@@ -1,6 +1,6 @@
-# Create your views here.
-
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.core.urlresolvers import reverse
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the MPharma index.")
+    return render(request, 'mrx/index.jade')
