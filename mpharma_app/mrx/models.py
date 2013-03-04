@@ -24,14 +24,34 @@ class Drug(models.Model):
 		return self.drug_name
 		
 class Inventory(models.Model):
-	pharmacy_id = models.ForeignKey(Pharmacy)
-	drug_id = models.ForeignKey(Drug)
+	pharmacy = models.ForeignKey(Pharmacy)
+	drug = models.ForeignKey(Drug)
 	quantity = models.PositiveIntegerField(max_length=15, default=0)
 	
 	def __unicode__(self):
 		return (self.pharmacy_id, self.drug_id, self.quantity)
 		
 class Patient(models.Model):
-	patient_name = models.CharField(max_length=100)
+	patient_firstName = models.CharField(max_length=100)
+	patient_lastName = models.CharField(max_length=100)
+	patient_password = models.CharField(max_length=100)
 	patient_phone = models.PositiveIntegerField(max_length=15, null=True)
+	
+class Physician(models.Model):
+	physician_id = models.PositiveIntegerField(primary_key=True, max_length=10)
+	physician_firstName = models.CharField(max_length=100)
+	physician_lastName = models.CharField(max_length=100)
+	physician_phone = models.PositiveIntegerField(max_length=15, null=True)
+	
+class Rx(models.Model):
+	patient = models.ForeignKey(Patient)
+	drug = models.ForeignKey(Drug)
+	remaining = models.PositiveIntegerField(max_length=10)
+	daily = models.BooleanField(default=False)
+	
+class Roster(models.Model):
+	physician = models.ForeignKey(Physician)
+	patient = models.ForeignKey(Patient)
+	isActive = models.BooleanField(default=True)
+	
 	
