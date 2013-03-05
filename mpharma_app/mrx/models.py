@@ -2,7 +2,6 @@ from django.db import models
 
 from django.contrib.auth.models import User, Group, Permission
 
-
 # Create your models here.
 class Pharmacy(models.Model):
 	pharmacy_user = models.OneToOneField(User, related_name='pharmacy', primary_key=True)
@@ -13,8 +12,8 @@ class Pharmacy(models.Model):
 	pharmacy_city = models.CharField(max_length=100)
 	pharmacy_street = models.CharField(max_length=100)
 	# pharmacy_email = models.CharField(max_length=100)
-	pharmacy_username = models.CharField(max_length=100)
-	# pharmacy_street_number = models.IntegerField(max_length=10, null=True)
+	# pharmacy_username = models.CharField(max_length=100)
+	pharmacy_street_number = models.IntegerField(max_length=10, null=True)
 	# pharmacy_lat = models.DecimalField(max_digits=10, decimal_places=7, null=True)
 	# pharmacy_long = models.DecimalField(max_digits=10, decimal_places=7, null=True)
 	
@@ -51,7 +50,7 @@ class Patient(models.Model):
 	# patient_street = models.CharField(max_length=100)
 	# pharmacy_street_number = models.IntegerField(max_length=10, null=True)
 	def __unicode__(self):
-		return (self.user)
+		return (self.patient_user)
 	
 class Physician(models.Model):
 	# physician_id = models.PositiveIntegerField(primary_key=True, max_length=10)
@@ -82,7 +81,7 @@ class Rx(models.Model):
 class Roster(models.Model):
 	physician = models.ForeignKey(Physician)
 	patient = models.ForeignKey(Patient)
-	isActive = models.BooleanField(default=True)
+	# isActive = models.BooleanField(default=True)
 	def __unicode__(self):
 		return (self.physician, self.patient)
 	

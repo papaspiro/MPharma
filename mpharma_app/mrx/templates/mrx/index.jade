@@ -18,13 +18,16 @@ html
 									p.title
 										a(href="#panel1") Pharmacy
 									.content
-										form(action=" ", method="post")
+										form(action="addPharm/", method="post"){% csrf_token %}
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="first_name", placeholder="First Name", style="margin-bottom:1em")
+													input(type="text", name="name", placeholder="Pharmacy Name", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="last_name", placeholder="Last Name", style="margin-bottom:1em")
+													input(type="text", name="username", placeholder="Last Name", style="margin-bottom:1em")
+											.row.collapse
+												.large-6.columns.large-centered
+													input(type="text", name="email", placeholder="Email", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="country", placeholder="Country", style="margin-bottom:1em")
@@ -37,9 +40,12 @@ html
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="password", placeholder="Password", style="margin-bottom:1em")
-											//- .row.collapse
-											//- 												.large-6.columns.large-centered
-											//- 													input(type="text", name="conf_password", placeholder="Confirm Password", style="margin-bottom:1em")
+											.row.collapse
+												.large-6.columns.large-centered
+													input(type="text", name="street", placeholder="Street", style="margin-bottom:1em")
+											.row.collapse
+												.large-6.columns.large-centered
+													input(type="text", name="streetNo", placeholder="Street Number", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="tel", name="tel", placeholder="Telephone Number", style="margin-bottom:1em")
@@ -53,13 +59,19 @@ html
 									p.title
 										a(href="#panel2") Patient
 									.content
-										form(action=" ", method="post")
+										form(action="addPat/", method="post"){% csrf_token %}
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="first_name", placeholder="First Name", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="last_name", placeholder="Last Name", style="margin-bottom:1em")
+											.row.collapse
+												.large-6.columns.large-centered
+													input(type="text", name="username", placeholder="Username", style="margin-bottom:1em")
+											.row.collapse
+												.large-6.columns.large-centered
+													input(type="text", name="email", placeholder="email", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="country", placeholder="Country", style="margin-bottom:1em")
@@ -126,29 +138,6 @@ html
 												.large-6.columns.large-centered
 													input.button.small(type="submit", value="Sign Up!", style="margin-bottom:1em; padding-top:1em; padding-bottom:1em;")
 
-			//- form(action=" ", method="post")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="text", placeholder="First Name")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="text", placeholder="Last Name")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="text", placeholder="Password")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="text", placeholder="Confirm Password")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="tel", placeholder="Telephone Number")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input(type="tel", placeholder="Confirm Telephone Number")
-			//- 	.row.collapse
-			//- 		.large-6.columns.large-centered
-			//- 			input.button.small(type="submit", value="Sign Up!")
-
 
 		include mrx/includes/founScript.jade
 		#logModal.reveal-modal.medium
@@ -157,6 +146,6 @@ html
 				input(type="text", name="log_username", placeholder="Username")
 				input(type="text", name="log_password", placeholder="Password")
 				input.small.button(type="submit", value="Sign In")
-			a.close-reveal-modal &#215;
+			a.close-reveal-modal1.close-reveal-modal &#215;
 
 
