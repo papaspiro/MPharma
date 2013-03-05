@@ -21,7 +21,8 @@ class Pharmacy(models.Model):
 		return self.pharmacy_name
 		
 class Drug(models.Model):
-	# drug_id = models.PositiveIntegerField(primary_key=True, max_length=10)
+	# drug_id = models.PositiveIntegerField(primary_key=True, max_length=10) have to add drug id at somepoint...
+	drug_NDC = models.CharField(max_length=100, primary_key=True)
 	drug_name = models.CharField(max_length=100)
 	drug_dosage = models.CharField(max_length=100)
 	
@@ -83,5 +84,5 @@ class Roster(models.Model):
 	patient = models.ForeignKey(Patient)
 	# isActive = models.BooleanField(default=True)
 	def __unicode__(self):
-		return (self.physician, self.patient)
+		return (self.physician.physician_hospital, self.patient.patient_country)
 	

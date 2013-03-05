@@ -39,7 +39,7 @@ html
 													input(type="text", name="city", placeholder="City", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="password", placeholder="Password", style="margin-bottom:1em")
+													input(type="password", name="password", placeholder="Password", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="street", placeholder="Street", style="margin-bottom:1em")
@@ -83,7 +83,7 @@ html
 													input(type="text", name="city", placeholder="City", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="password", placeholder="Password", style="margin-bottom:1em")
+													input(type="password", name="password", placeholder="Password", style="margin-bottom:1em")
 											//- .row.collapse
 											//- 												.large-6.columns.large-centered
 											//- 													input(type="text", name="conf_password", placeholder="Confirm Password", style="margin-bottom:1em")
@@ -124,7 +124,7 @@ html
 													input(type="text", name="username", placeholder="Username", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="password", placeholder="Password", style="margin-bottom:1em")
+													input(type="password", name="password", placeholder="Password", style="margin-bottom:1em")
 											//- .row.collapse
 											//- 												.large-6.columns.large-centered
 											//- 													input(type="text", name="conf_password", placeholder="Confirm Password", style="margin-bottom:1em")
@@ -144,7 +144,7 @@ html
 			h2 Hello, again!
 			form(action="portal/", method="post"){% csrf_token %}
 				input(type="text", name="log_username", placeholder="Username")
-				input(type="text", name="log_password", placeholder="Password")
+				input(type="password", name="log_password", placeholder="Password")
 				input.small.button(type="submit", value="Sign In")
 			a.close-reveal-modal1.close-reveal-modal &#215;
 

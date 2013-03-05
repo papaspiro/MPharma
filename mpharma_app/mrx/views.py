@@ -9,8 +9,28 @@ from mrx.models import *
 def index(request):
     return render(request, 'mrx/index.jade')
 
-# NEED addPharm and addPat they are basically the same as addphys... then you need to add patient and pharmacy landing pages and direct
-#users to those pages through the portal... 
+def addRx(request):
+	if request.method == "POST":
+		if request.user.password == request.POST['password']:
+			try:
+				pat = User.objects.get(username=request.POST['username']
+				
+			except	(KeyError, Patient.DoesNotExist):
+					#redisplay the poll voting form
+					return render(request, 'mrx/Doctor.jade', {
+						'phys': request.user,
+						'error_message': "That patient is not in our database",
+					})
+			else:
+				roster = Roster(physician=request.user.physician, patient=pat)
+				roster.save()
+				return HttpResponseRedirect(reverse('mrx:doctor'))
+		else:
+			return HttpResponseRedirect(reverse('mrx:index'))
+	else:
+		return HttpResponseRedirect(reverse('mrx:index'))
+		
+	
 def addPharm(request):
 	if request.method == "POST":
 		user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
@@ -96,8 +116,8 @@ def addPhys(request):
 def doctor(request):
 	if hasattr(request.user, 'physician'):
 		phys = request.user
-		print phys
-		return render(request, 'mrx/Doctor.jade', {'phys': phys})
+		rosterList = phys.physician.roster_set.all()
+		return render(request, 'mrx/Doctor.jade', {'phys': phys, 'roster':rosterList})
 	else:
 		return HttpResponseRedirect(reverse('mrx:index'))
 	
