@@ -88,7 +88,7 @@ html
 									p.title
 										a(href="#panel3") Physician
 									.content
-										form(action=" ", method="post")
+										form(action="addPhys/", method="post"){% csrf_token %}
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="first_name", placeholder="First Name", style="margin-bottom:1em")
@@ -97,7 +97,7 @@ html
 													input(type="text", name="last_name", placeholder="Last Name", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
-													input(type="text", name="hosp-name", placeholder="Hospital Name", style="margin-bottom:1em")
+													input(type="text", name="hosp_name", placeholder="Hospital Name", style="margin-bottom:1em")
 											.row.collapse
 												.large-6.columns.large-centered
 													input(type="text", name="country", placeholder="Country", style="margin-bottom:1em")
