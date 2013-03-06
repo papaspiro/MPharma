@@ -3,7 +3,103 @@ html
 	include mrx/includes/head
 	body
 		include mrx/includes/nav-loggedin
-		h1 #{pharm.pharmacy}
+		.row
+			.large-6.columns
+				h1.subheader Welcome #{pharm.pharmacy}!
+			.large-6.columns
+				h1.subheader.text-right #{pharm.pharmacy.pharmacy_city}, #{pharm.pharmacy.pharmacy_province} 
+				h1.subheader.text-right #{pharm.pharmacy.pharmacy_street_number} #{pharm.pharmacy.pharmacy_street}
+			hr
+		.row
+			.large-9.push-3.columns
+				.row
+					.large-12.columns
+						h1 Inventory
+						.large-3.columns
+							ul.pricing-table
+								li.title Hydrocodone
+								li.description NDC: 45865-411
+								li.description 40 Remaining
+								li.cta-button
+									a.button.alert(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Prozac
+								li.description NDC: 0002-3004
+								li.description 54 Remaining
+								li.cta-button
+									a.button.alert(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Zoloft
+								li.description NDC: 0049-4900
+								li.description 70 Remaining
+								li.cta-button
+									a.button.alert(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Xanax
+								li.description NDC: 0009-0029
+								li.description 200 Remaining
+								li.cta-button
+									a.button(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Ritalin
+								li.description NDC: 0078-0370
+								li.description 273 Remaining
+								li.cta-button
+									a.button(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Adderall
+								li.description NDC: 0555-0762
+								li.description 943 Remaining
+								li.cta-button
+									a.button.success(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Lipitor
+								li.description NDC: 0071-0155  
+								li.description 1072 Remaining
+								li.cta-button
+									a.button.success(href="#", data-reveal-id="") Buy
+						.large-3.columns
+							ul.pricing-table
+								li.title Zocor
+								li.description NDC: 0006-0543
+								li.description 1298 Remaining
+								li.cta-button
+									a.button.success(href="#", data-reveal-id="") Buy
+
+			.large-3.pull-9.columns
+				h1 Upload Inventory
+				form(action="#", method="post"){% csrf_token %}
+					.row.collapse
+						.small-10.columns
+							input(type="text", name="tel", placeholder="Select a CSV File")
+						.small-2.columns
+							input.button.success.prefix(value="&#43;", type="submit", style="padding-top:.1em; padding-bottom:.1em;")
+				hr
+				h1 Manual Update
+				form(action="#", method="post"){% csrf_token %}
+					.row.collapse
+						.small-10.columns
+							input(type="text", name="tel", placeholder="NDC")
+					.row.collapse
+						.small-10.columns
+							input(type="text", name="tel", placeholder="Amount Remaining")
+						.small-2.columns
+							input.button.success.prefix(value="Go", type="submit", style="padding-top:.1em; padding-bottom:.1em;")
+				hr
+				h1 Search Inventory
+				form(action="#", method="post"){% csrf_token %}
+					.row.collapse
+						.small-10.columns
+							input(type="text", name="tel", placeholder="Drug Name")
+						.small-2.columns
+							input.button.success.prefix(value="Go", type="submit", style="padding-top:.1em; padding-bottom:.1em;")
+
 	include mrx/includes/founScript.jade
 	#logModal.reveal-modal.medium
 		h2 Are you sure you want to sign out?

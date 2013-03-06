@@ -3,7 +3,110 @@ html
 	include mrx/includes/head
 	body
 		include mrx/includes/nav-loggedin
-		h1 #{pat.patient}
+		.row
+			.large-6.columns
+				h1.subheader Welcome #{pat.first_name} #{pat.last_name}!
+			.large-6.columns
+				h1.subheader.text-right #{pharm.pharmacy.pharmacy_city}, #{pharm.pharmacy.pharmacy_province} 
+				h1.subheader.text-right #{pharm.pharmacy.pharmacy_street_number} #{pharm.pharmacy.pharmacy_street}
+			hr
+		.row
+			.large-9.push-3.columns
+				.row
+					.large-12.columns
+						h1 Inventory
+						.large-3.columns
+							ul.pricing-table
+								li.title Hydrocodone
+								li.description 2 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Prozac
+								li.description 12 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Zoloft
+								li.description 13 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Xanax
+								li.description 16 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Ritalin
+								li.description 19 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Adderall
+								li.description 23 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+						.large-3.columns
+							ul.pricing-table
+								li.title Lipitor
+								li.description 25 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;						
+						.large-3.columns
+							ul.pricing-table
+								li.title Zocor
+								li.description 31 Remaining
+								li.cta-button
+									.row
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#45;
+										a.tiny.button(href="#", style="font-size:1em") 
+											b &#43;
+
+			.large-3.pull-9.columns
+				.row
+					h1 My Prescriptions
+					h4.subheader Use the + / - Symbols to Change the number of each medication remaining, or set to Daily
+					hr
+				.row
+					a.button.round(href="#") Request a Refill
+					hr
+					a.button.round(href="#") Make an Appointment
+					hr
+
 	include mrx/includes/founScript.jade
 	#logModal.reveal-modal.medium
 		h2 Are you sure you want to sign out?

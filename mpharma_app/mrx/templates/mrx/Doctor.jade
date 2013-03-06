@@ -10,7 +10,25 @@ html
 				h1.subheader.text-right #{phys.physician.physician_hospital}
 			hr
 		.row
-			.small-3.columns
+			.large-9.push-3.columns
+				.row
+					.large-12.columns
+						h1 Patient Roster
+						if roster
+							each p in roster
+								.large-4.columns
+									//- .row
+									ul.pricing-table
+										li.title #{p.patient.patient_user.first_name} #{p.patient.patient_user.last_name}
+										li.price Tel: #{p.patient.patient_phone}
+										if rx_array
+											each r in rx_array
+												if p.patient.patient_user.username == r.patient.patient_user.username
+													li.bullet-item #{r.drug.drug_name}
+										li.cta-button
+											a.button(href="#", data-reveal-id="patient-#{p.patient.patient_phone}") Prescribe medication
+
+			.large-3.pull-9.columns
 				h1 Add patient
 					p #{error_message}
 				form(action="addToRoster/", method="post"){% csrf_token %}
@@ -19,16 +37,7 @@ html
 							input(type="text", name="tel", placeholder="Patient's Telephone No.")
 						.small-2.columns
 							input.button.success.prefix(value="Add", type="submit", style="padding-top:.1em; padding-bottom:.1em;")
-			.small-9.columns
-				h1 Patient Roster
-				each p in roster
-					.small-2.large-4.columns
-						ul.pricing-table
-							li.title #{p.patient.patient_user.first_name} #{p.patient.patient_user.last_name}
-							li.price Tel: #{p.patient.patient_phone}
-							li.cta-button
-								a.button(href="#", data-reveal-id="patient-#{p.patient.patient_phone}") Prescribe medication
-						
+			
 	include mrx/includes/founScript.jade
 
 	#logModal.reveal-modal.medium
@@ -40,18 +49,18 @@ html
 			.small-4.large-6.columns
 				a.button.alert(href= " ") No
 		a.close-reveal-modal &#215;
-
-	each p in roster
-		.reveal-modal.large(id="patient-#{p.patient.patient_phone}")
-			h2 What would you like to prescribe to #{p.patient.patient_user.first_name} #{p.patient.patient_user.last_name}?
-			hr
-			form(action="addRx/", method="post"){% csrf_token %}
-				input(type="text", name="NDC", placeholder="National Drug Code")
-				input(type="text", name="quantity", placeholder="Quantity")
-				input(type="text-area", name="info", placeholder="Additional Information")
-				//- input(type="text", name="drug_name", placeholder="Proprietary Drug Name")
-				//- input(type="text", name="drug_dosage", placeholder="Dosage")
-				input(type="password", name="password", placeholder="Password")
-				input(type='hidden', name="pat_username", value="#{p.patient.patient_user.username}")
-				input.small.button(type="submit", value="Prescribe")
-			a.close-reveal-modal1.close-reveal-modal &#215;
+	if roster
+		each p in roster
+			.reveal-modal.large(id="patient-#{p.patient.patient_phone}")
+				h2 What would you like to prescribe to #{p.patient.patient_user.first_name} #{p.patient.patient_user.last_name}?
+				hr
+				form(action="addRx/", method="post"){% csrf_token %}
+					input(type="text", name="NDC", placeholder="National Drug Code")
+					//- input(type="text", name="quantity", placeholder="Quantity")
+					textarea(name="instructions", placeholder="Instructions For Patient", style="margin-bottom:1em")
+					//- input(type="text", name="drug_name", placeholder="Proprietary Drug Name")
+					//- input(type="text", name="drug_dosage", placeholder="Dosage")
+					input(type="password", name="password", placeholder="Password")
+					input(type='hidden', name="tel", value="#{p.patient.patient_phone}")
+					input.small.button(type="submit", value="Prescribe")
+				a.close-reveal-modal1.close-reveal-modal &#215;

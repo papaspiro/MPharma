@@ -74,8 +74,9 @@ class Physician(models.Model):
 class Rx(models.Model):
 	patient = models.ForeignKey(Patient)
 	drug = models.ForeignKey(Drug)
-	remaining = models.PositiveIntegerField(max_length=10)
+	remaining = models.PositiveIntegerField(max_length=10, default=0)
 	daily = models.BooleanField(default=False)
+	instructions = models.CharField(max_length=300)
 	def __unicode__(self):
 		return (self.patient, self.drug)
 	
